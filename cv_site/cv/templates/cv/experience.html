@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="text-center">
+    <h1>My Work Experiences</h1>
+</div>
+<div>
+    {% for exp in experiences %}
+    <li>{{ exp.title }} en {{ exp.company }} ({{ exp.start_date }} - {{ exp.end_date }})</li>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="text-center">
+    <h1>My Education</h1>
+</div>
+<div>
+    {% for ed in education %}
+    <li>{{ ed.title }} en {{ ed.company }} ({{ ed.start_date }} - {{ ed.end_date }})</li>
+    {% endfor %}
+</div>
+{% endblock %}
