@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="text-center">
+    <h1>Gestionar Experiencia Laboral</h1>
+</div>
+<div>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar</button>
+    </form>
+</div>
+<div>
+    <h2>Experiencias Registradas</h2>
+    <ul>
+        {% for experience in experiences %}
+            <li>{{ experience.job_title }} at {{ experience.company_name }} ({{ experience.start_date }} - {{ experience.end_date }})</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

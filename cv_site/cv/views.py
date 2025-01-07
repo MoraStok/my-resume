@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from .models import Experience, Education
-from .forms import ContactForm
+from .models import Experience, Education, WorkExperience
+from .forms import ContactForm, WorkExperienceForm
 
 def home(request):
     return render(request, 'cv/home.html')
@@ -23,3 +23,15 @@ def contact_view(request):
         form = ContactForm()
 
     return render(request, 'cv/contact.html', {'form': form})
+
+def manage_experience(request):
+    if request.method == 'POST':
+        form = WorkExperienceForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('manage_experience')
+    else:
+        form = WorkExperienceForm()
+    
+    experiences = WorkExperience.objects.all()
+    return render(request, 'manage_experience.html', {'form': form, 'experiences': experiences})
