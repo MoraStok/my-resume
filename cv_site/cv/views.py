@@ -3,15 +3,7 @@ from .models import Experience, Education, WorkExperience
 from .forms import ContactForm, WorkExperienceForm
 
 def home(request):
-    return render(request, 'cv/home.html')
-
-def education_view(request):
-    education = Education.objects.all()
-    return render(request, 'cv/education.html', {'education': education})
-
-def experience_view(request):
-    experience = Experience.objects.all()
-    return render(request, 'cv/experience.html', {'experience': experience})
+    return render(request, 'base.html')
 
 def contact_view(request):
     if request.method == 'POST':

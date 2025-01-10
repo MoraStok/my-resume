@@ -1,10 +1,13 @@
 from django.urls import path
 from . import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('', views.home, name='home'),
-    path('education/', views.education_view, name='education'),
-    path('experience/', views.education_view, name='experience'),
     path('contact/', views.contact_view, name='contact'),
     path('manage_experience/', views.manage_experience, name='manage_experience'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
