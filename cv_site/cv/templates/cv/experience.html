@@ -1,12 +1,35 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
 <div class="text-center">
     <h1>My Work Experiences</h1>
 </div>
 <div>
-    {% for exp in experiences %}
-    <li>{{ exp.title }} en {{ exp.company }} ({{ exp.start_date }} - {{ exp.end_date }})</li>
-    {% endfor %}
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Job</th>
+                <th>Company</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for experience in experiences %}
+            <tr>
+                <td>{{ experience.job_title }}</td>
+                <td>{{ experience.company_name }}</td>
+                <td>{{ experience.start_date }}</td>
+                <td>{{ experience.end_date|default:"Present" }}</td>
+                <td>{{ experience.description }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5">There are no work experiences registered.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </div>
 {% endblock %}

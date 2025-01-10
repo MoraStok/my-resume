@@ -9,4 +9,8 @@ class ContactForm(forms.ModelForm):
 class WorkExperienceForm(forms.ModelForm):
     class Meta:
         model = WorkExperience
-        fields = '__all__'
+        fields = ['job_title', 'company_name', 'start_date', 'end_date', 'description']
+        widgets = {
+            'start_date': forms.DateInput(attrs={'type': 'date'}),
+            'end_date': forms.DateInput(attrs={'type': 'date'}),
+        }

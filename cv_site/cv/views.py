@@ -34,4 +34,4 @@ def manage_experience(request):
         form = WorkExperienceForm()
     
     experiences = WorkExperience.objects.all()
-    return render(request, 'manage_experience.html', {'form': form, 'experiences': experiences})
+    return render(request, 'cv/manage_experience.html', {'form': form, 'experiences': experiences})
